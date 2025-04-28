@@ -1,0 +1,32 @@
+create database JAZMIN_BD;
+use JAZMIN_BD;
+create table Estudiantes(
+id int primary key,
+nombre varchar (50),
+fechaNacimiento date
+);
+
+
+insert into Estudiantes (id, nombre, fechaNacimiento) values (1, 'Jazmin', '2006-07-18'), (2, 'Valentino', '2006-11-10');
+
+delete from Estudiantes where id=2;
+
+create table Materias(
+codigo int primary key identity(1,1),
+nombre varchar (50)
+);
+
+insert into Materias (nombre) values('Mantenimiento IV'), ('BASE DE DATOS'), ('MATEMÁTICA VI');
+
+
+create table Inscripciones(
+Estudianteid int,
+MateriaCodigo int,
+foreign key (Estudianteid) references Estudiantes(id),
+foreign key (MateriaCodigo) references Materias(codigo) 
+);
+
+insert into Inscripciones (Estudianteid, MateriaCodigo) values (1,2);
+select * from Estudiantes;
+select * from Materias;
+select * from Inscripciones;
